@@ -1,0 +1,27 @@
+# Levenshtein Edit Distance
+def Levenshtein(word1, word2):
+    m = len(word1)
+    n = len(word2)
+
+    # Initialize table
+    dp = [[]]
+    for i in range(m + 1):
+        for j in range(n + 1):
+            dp[i][j] = 0
+
+    for i in range(m + 1):
+        dp[i][0] = i
+    for j in range(n + 1):
+        dp[0][j] = j
+
+    # Recursion
+    for i in range(m + 1):
+        for j in range(n + 1):
+            if word1[i - 1] == word2[j - 1]:
+                cost = 0
+            else:
+                cost = 1
+
+            dp[i][j] = min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost)
+
+    return dp[m][n]
