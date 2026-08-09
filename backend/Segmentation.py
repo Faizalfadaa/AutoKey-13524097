@@ -25,6 +25,10 @@ def word_segmentation(word):
                     segmented_idx[i] = j
 
     # Construct the segmented words (trace back)
+    traceback_process = []
+    if len(segmented_idx) == 0:
+        return segmented_word, dp, traceback_process
+
     i = m
     for _ in range(m):
         if i == 0:
@@ -32,8 +36,10 @@ def word_segmentation(word):
 
         first_idx = segmented_idx[i]
         last_idx = i
+
+        traceback_process.append((first_idx, last_idx, word[first_idx:last_idx]))
         segmented_word.append(word[first_idx:last_idx])
 
         i = segmented_idx[i]
 
-    return segmented_word[::-1], dp
+    return segmented_word[::-1], dp, traceback_process
