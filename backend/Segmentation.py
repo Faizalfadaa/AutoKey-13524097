@@ -1,12 +1,11 @@
 import math
-from Loader import N_WORDS, DATA
 
 # Cost for word_segmentation
-def cost(freq_word):
-    return math.log(N_WORDS / freq_word) 
+def cost(freq_word, total_words):
+    return math.log(total_words / freq_word) 
 
 # Return words that is already segmented
-def word_segmentation(word):
+def word_segmentation(word, data):
     segmented_word = []
 
     m = len(word)
@@ -17,8 +16,8 @@ def word_segmentation(word):
     for i in range(1, m + 1):
         for j in range(i):
             current_word = word[j:i]
-            if current_word in DATA:
-                current_cost = dp[j] + cost(DATA[current_word])
+            if current_word in data:
+                current_cost = dp[j] + cost(data[current_word])
 
                 if current_cost < dp[i]:
                     dp[i] = current_cost

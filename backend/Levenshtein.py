@@ -1,5 +1,3 @@
-from Loader import DATA, get_word_frequency
-
 # Levenshtein Edit Distance
 def Levenshtein(word1, word2):
     m = len(word1)
@@ -32,10 +30,10 @@ def Levenshtein(word1, word2):
 
 # Return list of words with lenvenshtein distance <= 2
 # Sorted by distance ASC, by frequency DESC
-def get_levenshtein_words(word):
+def get_levenshtein_words(word, data):
     list_words = []
     list_distance = []
-    for words in DATA:
+    for words in data:
         distance = Levenshtein(word, words)
         if distance <= 2:
             list_words.append(words)
@@ -51,8 +49,8 @@ def get_levenshtein_words(word):
 
             # Sort by frequency DESC
             elif list_distance[j] == list_distance[j + 1]:
-                freq_word1 = get_word_frequency(list_words[j])
-                freq_word2 = get_word_frequency(list_words[j + 1])
+                freq_word1 = data[list_words[j]]
+                freq_word2 = data[list_words[j + 1]]
 
                 if freq_word1 < freq_word2:
                     list_words[j], list_words[j + 1] = list_words[j + 1], list_words[j]     

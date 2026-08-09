@@ -1,5 +1,5 @@
 import sys
-from Loader import get_word_frequency
+
 # Node Class
 class Node:
     def __init__(self):
@@ -54,7 +54,7 @@ class Trie:
         return True
 
     # Return top N of words with specific prefix
-    def get_suggestions(self, word, n):
+    def get_suggestions(self, word, n, data):
         suggested_words = []
         current_node = self.root
         for char in word:
@@ -79,8 +79,8 @@ class Trie:
         num_sugg_words = len(suggested_words)
         for i in range(num_sugg_words - 1):
             for j in range(num_sugg_words - i - 1):
-                freq_word1 = get_word_frequency(suggested_words[j])
-                freq_word2 = get_word_frequency(suggested_words[j + 1])
+                freq_word1 = data[suggested_words[j]]
+                freq_word2 = data[suggested_words[j + 1]]
 
                 if freq_word1 < freq_word2:
                     suggested_words[j], suggested_words[j + 1] = suggested_words[j + 1], suggested_words[j]
