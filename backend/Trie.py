@@ -1,11 +1,8 @@
-import sys
-
 # Node Class
 class Node:
     def __init__(self):
         self.children = dict()
         self.is_end_word = False
-        self.memory = 0
 
 # Trie Data structure
 class Trie:
@@ -22,7 +19,6 @@ class Trie:
         for char in word:
             if char not in current_node.children:
                 current_node.children[char] = Node()
-                current_node.memory = sys.getsizeof(current_node)
                 self.node_count += 1
 
             current_node = current_node.children[char]
@@ -31,7 +27,6 @@ class Trie:
             self.word_count += 1
 
         current_node.is_end_word = True
-        self.estimate_memory_usage = self.get_estimated_memory_usage()
 
     # Search word in trie
     def search(self, word):
@@ -102,18 +97,3 @@ class Trie:
     # Get the avarage depth in the Trie
     def get_avarage_depth(self):
         return self.get_total_depth(self.root, 0) / self.node_count
-
-    # Get the total memory usage of each node
-    def get_total_memory_usage(self, current_node, memory):
-        total_memory = memory
-        if len(current_node.children) == 0:
-            total_memory += 0
-
-        for char in current_node.children:
-            total_memory += self.get_total_memory_usage(current_node.children[char], memory + current_node.memory)
-
-        return total_memory
-
-    # Get estimated memory usage of the Trie
-    def get_estimated_memory_usage(self):
-        return self.get_total_memory_usage(self.root, 0) / self.node_count
