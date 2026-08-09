@@ -5,7 +5,7 @@ def cost(freq_word, total_words):
     return math.log(total_words / freq_word) 
 
 # Return words that is already segmented
-def word_segmentation(word, data):
+def word_segmentation(word, data, total_words):
     segmented_word = []
 
     m = len(word)
@@ -17,7 +17,7 @@ def word_segmentation(word, data):
         for j in range(i):
             current_word = word[j:i]
             if current_word in data:
-                current_cost = dp[j] + cost(data[current_word])
+                current_cost = dp[j] + cost(data[current_word], total_words)
 
                 if current_cost < dp[i]:
                     dp[i] = current_cost
