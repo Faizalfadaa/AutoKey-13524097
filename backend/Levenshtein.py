@@ -30,7 +30,8 @@ def Levenshtein(word1, word2):
 
 # Return list of words with lenvenshtein distance <= 2
 # Sorted by distance ASC, by frequency DESC
-def get_levenshtein_words(word, data):
+# Can pick top N words
+def get_levenshtein_words(word, top_n, data):
     list_words = []
     list_distance = []
     for words in data:
@@ -56,4 +57,4 @@ def get_levenshtein_words(word, data):
                     list_words[j], list_words[j + 1] = list_words[j + 1], list_words[j]     
                     list_distance[j], list_distance[j + 1] = list_distance[j + 1], list_distance[j]           
 
-    return list_words
+    return list_words[:top_n]
