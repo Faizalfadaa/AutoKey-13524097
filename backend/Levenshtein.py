@@ -35,6 +35,10 @@ def get_levenshtein_words(word, top_n, data):
     list_words = []
     list_distance = []
     for words in data:
+        # Skip every word more than 2 different character with the current word
+        if abs(len(words) - len(word)) > 2:
+            continue
+
         distance = Levenshtein(word, words)
         if distance <= 2:
             list_words.append(words)
