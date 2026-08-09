@@ -1,13 +1,16 @@
 import json
+from pathlib import Path
 
 # Load each word and frequency into a map
 def load_data():
-    with open("data/kamus.json", "r") as file:
+    DIR = Path(__file__).resolve().parent
+    DATA_PATH = DIR / "data" / "kamus.json"
+    with open(DATA_PATH, "r", encoding = "utf-8") as file:
         data = json.load(file)
 
     return data
 
-# Initialize th loaded dataset
+# Initialize the loaded dataset
 DATA = load_data()
 
 # Return frequency of a specific word
