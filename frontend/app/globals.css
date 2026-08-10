@@ -1,0 +1,52 @@
+/* Base style for the whole app */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page background */
+.page {
+  min-height: 100vh;
+  background: #f4f4f5;
+  padding: 24px;
+}
+
+/* Main app container */
+.app-shell {
+  max-width: 1152px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 24px;
+}
+
+/* Editor and summary grid */
+.main-grid {
+  display: grid;
+  gap: 16px;
+}
+
+/* Shared box style */
+.panel-box {
+  border: 1px solid #d4d4d8;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+/* Header height */
+.header-panel {
+  height: 64px;
+}
+
+/* Editor and summary height */
+.editor-panel,
+.summary-panel {
+  height: 224px;
+}
+
+/* Tool panel height */
+.tool-panel {
+  height: 144px;
+}
