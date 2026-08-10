@@ -1,0 +1,37 @@
+/* Base style for the whole app */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page background */
+.page {
+  min-height: 100vh;
+  background: #f4f4f5;
+  padding: 24px;
+}
+
+/* Main app container */
+.app-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  gap: 18px;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 34px 40px 40px;
+}
+
+/* Editor and summary grid */
+.main-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) 330px;
+}
+
+/* Shared box style */
+.panel-box {
+  border: 1px solid #e4e4e7;
+  border-radius: 20px;
+  background: #ffffff;
+}
