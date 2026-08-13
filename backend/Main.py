@@ -62,9 +62,17 @@ def get_check_all(text):
     words = text.strip().split()
 
     result = []
+    error_words = set()
     for word in words:
-        if TRIE.search(word) == False:
-            suggested_word = get_levenshtein_words(word, 5, DATA)
+        lower_word = word.lower()
+
+        # Continue if there are duplicate words
+        if lower_word in error_words:
+            continue
+
+        if TRIE.search(lower_word) == False:
+            suggested_word = get_levenshtein_words(lower_word, 5, DATA)
+            error_words.add(lower_word)
             result.append({
                 "word": word,
                 "suggested_word": suggested_word
