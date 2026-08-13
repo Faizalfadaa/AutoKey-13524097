@@ -1,4 +1,51 @@
-/* Main editor box */
-.editor-panel {
+/* Editor card */
+.editor {
   min-height: 260px;
+  padding: 18px;
+}
+
+/* Editor title row */
+.editor-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+/* Small section title */
+.editor-top p {
+  margin: 0;
+  color: #2d55ab;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Small rounded label */
+.editor-top span {
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #2d55ab;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Editable text box */
+.text-area {
+  min-height: 150px;
+  border: 1px solid #93c5fd;
+  border-radius: 16px;
+  padding: 24px;
+  color: #172554;
+  font-size: 15px;
+  line-height: 1.7;
+  outline: none;
+}
+
+/* Text below the editor */
+.note {
+  margin: 14px 0 0;
+  color: #71717a;
+  font-size: 14px;
 }
