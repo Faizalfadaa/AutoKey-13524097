@@ -1,5 +1,7 @@
 import math
+import re
 import sys
+import time
 
 from Loader import load_data
 from Trie import Trie, Node
@@ -39,13 +41,30 @@ def get_trie_statistics():
 
 # Get the data for auto complete
 def get_auto_complete(word):
+    word = word.lower().strip()
+
+    start_time = time.perf_counter()
+    suggested_words = TRIE.get_suggestions(word, 5, DATA)
+    end_time = time.perf_counter()
+
     return {
         "word": word,
-        "suggested_words": TRIE.get_suggestions(word, 5, DATA)
+        "suggested_words": suggested_words,
+        "latency_ms": round((end_time - start_time) * 1000, 2)
     }
 
 # Get the data for spellcheck
 def get_spell_check(word):
+    word = word.lower().strip()
+    word = re.sub(r"[^a-zA-Z]", "", word)
+
+    if word == "":
+        return {
+            "word": word,
+            "isValid": True,
+            "suggested_word": []
+        }
+
     if TRIE.search(word) == False:
         return {
             "word": word,
@@ -59,9 +78,30 @@ def get_spell_check(word):
             "suggested_word": []
         }        
 
+# Add a custom word into the current backend data
+def add_custom_word(word):
+    word = word.lower().strip()
+    word = re.sub(r"[^a-zA-Z]", "", word)
+
+    if word == "":
+        return {
+            "success": False,
+            "word": word
+        }
+
+    if TRIE.search(word) == False:
+        DATA[word] = 1
+        TRIE.insert(word)
+        TRIE.estimate_memory_usage = sys.getsizeof(Node()) * TRIE.node_count
+
+    return {
+        "success": True,
+        "word": word
+    }
+
 # Check all the words
 def get_check_all(text):
-    words = text.strip().split()
+    words = re.findall(r"[a-zA-Z]+", text)
 
     result = []
     error_words = set()
