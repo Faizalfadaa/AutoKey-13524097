@@ -33,7 +33,7 @@ def Levenshtein(word1, word2):
 # Can pick top N words
 def get_levenshtein_words(word, top_n, data):
     list_words = []
-    list_distance = []
+
     for words in data:
         # Skip every word more than 2 different character with the current word
         if abs(len(words) - len(word)) > 2:
@@ -41,24 +41,13 @@ def get_levenshtein_words(word, top_n, data):
 
         distance = Levenshtein(word, words)
         if distance <= 2:
-            list_words.append(words)
-            list_distance.append(distance)
+            list_words.append((words, distance, data[words]))
 
-    # Sort by Distance ASC
-    n = len(list_words)
-    for i in range(n - 1):
-        for j in range(n - i - 1):
-            if list_distance[j] > list_distance[j + 1]:
-                list_distance[j], list_distance[j + 1] = list_distance[j + 1], list_distance[j]
-                list_words[j], list_words[j + 1] = list_words[j + 1], list_words[j]
+    # Sort by Distance ASC and by frequency DESC
+    list_words.sort(key=lambda item: (item[1], -item[2]))
 
-            # Sort by frequency DESC
-            elif list_distance[j] == list_distance[j + 1]:
-                freq_word1 = data[list_words[j]]
-                freq_word2 = data[list_words[j + 1]]
-
-                if freq_word1 < freq_word2:
-                    list_words[j], list_words[j + 1] = list_words[j + 1], list_words[j]     
-                    list_distance[j], list_distance[j + 1] = list_distance[j + 1], list_distance[j]           
-
-    return list_words[:top_n]
+    result = []
+    for word, _, _ in list_words[:top_n]:
+        result.append(word)
+        
+    return result

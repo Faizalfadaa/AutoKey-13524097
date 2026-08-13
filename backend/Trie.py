@@ -71,17 +71,8 @@ class Trie:
         dfs(current_node, word)
 
         # Sort the suggested word by frequency
-        num_sugg_words = len(suggested_words)
-        for i in range(num_sugg_words - 1):
-            for j in range(num_sugg_words - i - 1):
-                freq_word1 = data[suggested_words[j]]
-                freq_word2 = data[suggested_words[j + 1]]
-
-                if freq_word1 < freq_word2:
-                    suggested_words[j], suggested_words[j + 1] = suggested_words[j + 1], suggested_words[j]
-
-        top_n_words = suggested_words[:n]
-        return top_n_words
+        suggested_words.sort(key=lambda suggested_word: data[suggested_word], reverse=True)
+        return suggested_words[:n]
 
     # Get the sum of all node depths in the Trie
     def get_total_depth(self, current_node, depth):
