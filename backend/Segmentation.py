@@ -25,7 +25,7 @@ def word_segmentation(word, data, total_words):
 
     # Construct the segmented words (trace back)
     traceback_process = []
-    if len(segmented_idx) == 0:
+    if dp[m] == math.inf:
         return segmented_word, dp, traceback_process
 
     i = m
@@ -41,4 +41,4 @@ def word_segmentation(word, data, total_words):
 
         i = segmented_idx[i]
 
-    return segmented_word[::-1], dp, traceback_process
+    return segmented_word[::-1], dp, traceback_process[::-1]
