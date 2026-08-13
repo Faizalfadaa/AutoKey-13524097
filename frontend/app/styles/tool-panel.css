@@ -7,7 +7,7 @@
 /* Tool tabs wrapper */
 .tool-tabs {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 4px;
   border-radius: 14px;
   background: #eff6ff;
@@ -65,4 +65,128 @@
   margin: 14px 0 0;
   color: #71717a;
   font-size: 14px;
+}
+
+/* Result box for Auto-Space */
+.segment-result {
+  margin-top: 18px;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 14px;
+}
+
+/* Each result section */
+.segment-section {
+  padding-bottom: 14px;
+}
+
+/* Add divider between result sections */
+.segment-section + .segment-section {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 14px;
+}
+
+/* Result label */
+.segment-section p {
+  margin: 0 0 6px;
+  color: #71717a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Segmented text */
+.segment-section strong {
+  color: #1746a2;
+  font-size: 16px;
+}
+
+/* Full DP array */
+.dp-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* One DP item */
+.dp-list span {
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1746a2;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Trace-back steps */
+.trace-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #27272a;
+  font-size: 14px;
+}
+
+/* Empty trace-back message */
+.empty-trace {
+  color: #71717a;
+  font-size: 14px;
+}
+
+/* Result box for Levenshtein */
+.spell-result {
+  margin-top: 18px;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 14px;
+}
+
+/* Spell result label */
+.spell-result p {
+  margin: 12px 0 6px;
+  color: #71717a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* First spell result label */
+.spell-result p:first-child {
+  margin-top: 0;
+}
+
+/* Checked word */
+.spell-result strong {
+  color: #1746a2;
+  font-size: 16px;
+}
+
+/* Valid word status */
+.valid-word {
+  color: #15803d;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Invalid word status */
+.invalid-word {
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Levenshtein suggestions wrapper */
+.spell-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* One Levenshtein suggestion */
+.spell-suggestions span {
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1746a2;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
 }
