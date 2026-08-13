@@ -19,7 +19,7 @@ export default function EditorPanel({setEditorText}) {
       </div>
 
       {/* Editable text area */}
-      <div ref={editorRef} className="text-area" contentEditable suppressContentEditableWarning onInput={
+      <div ref={editorRef} className="text-area" contentEditable suppressContentEditableWarning spellCheck={false} data-placeholder="Tulis teks disini" onInput={
         (event) => {
           // Get the full editor text
           const text = event.currentTarget.innerText;
@@ -67,9 +67,7 @@ export default function EditorPanel({setEditorText}) {
             setSuggestions([]);                
           }
         }
-      }>
-        Tulis teks disini
-      </div>
+      }></div>
 
       {/* Show auto complete suggestions */}
       {suggestions.length > 0 && (

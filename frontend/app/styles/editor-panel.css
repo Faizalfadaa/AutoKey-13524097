@@ -43,6 +43,12 @@
   outline: none;
 }
 
+/* Placeholder text for the empty editor */
+.text-area:empty::before {
+  content: attr(data-placeholder);
+  color: #71717a;
+}
+
 /* Text below the editor */
 .note {
   margin: 14px 0 0;
