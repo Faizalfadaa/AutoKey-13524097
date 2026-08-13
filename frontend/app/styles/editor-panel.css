@@ -49,3 +49,31 @@
   color: #71717a;
   font-size: 14px;
 }
+
+/* Suggestion dropdown */
+.suggestion-box {
+  width: 240px;
+  margin-top: 10px;
+  border: 1px solid #d4d4d8;
+  border-radius: 12px;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 8px 20px #00000014;
+}
+
+/* Suggestion item */
+.suggestion-item {
+  width: 100%;
+  border: 0;
+  background: #ffffff;
+  color: #172554;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+/* Suggestion hover state */
+.suggestion-item:hover {
+  background: #eff6ff;
+}
