@@ -53,7 +53,7 @@ def get_spell_check(word):
     else:
         return {
             "word": word,
-            "isValid": False,
+            "isValid": True,
             "suggested_word": []
         }        
 
