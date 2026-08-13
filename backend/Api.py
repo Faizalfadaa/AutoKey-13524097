@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from Main import get_trie_statistics, get_auto_complete, get_spell_check, get_check_all
+from Main import get_trie_statistics, get_auto_complete, get_spell_check, get_check_all, get_segmented_words
 
 # Create the FastAPI app
 app = FastAPI()
@@ -27,3 +27,8 @@ def spell_check(word):
 @app.post("/check_all")
 def check_all(text):
     return get_check_all(text)
+
+# Return word segmentation result
+@app.get("/segment")
+def segment(word: str):
+    return get_segmented_words(word)
