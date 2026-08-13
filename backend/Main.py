@@ -36,18 +36,18 @@ def get_trie_statistics():
     return statistics
 
 # Get the data for auto complete
-def auto_complete(word):
+def get_auto_complete(word):
     return {
         "word": word,
         "suggested_words": TRIE.get_suggestions(word, 5, DATA)
     }
 
 # Get the data for spellcheck
-def spell_check(word):
+def get_spell_check(word):
     if TRIE.search(word) == False:
         return {
             "word": word,
-            "isValid": True,
+            "isValid": False,
             "suggested_word": get_levenshtein_words(word, 5, DATA)
         }
     else:
@@ -58,8 +58,8 @@ def spell_check(word):
         }        
 
 # Check all the words
-def check_all(words):
+def get_check_all(words):
     pass
 
-def segmented_words(word):
+def get_segmented_words(word):
     pass
