@@ -58,8 +58,22 @@ def get_spell_check(word):
         }        
 
 # Check all the words
-def get_check_all(words):
-    pass
+def get_check_all(text):
+    words = text.strip().split()
 
+    result = []
+    for word in words:
+        if TRIE.search(word) == False:
+            suggested_word = get_levenshtein_words(word, 5, DATA)
+            result.append({
+                "word": word,
+                "suggested_word": suggested_word
+            })
+
+    return {
+        "text": text,
+        "result": result
+    }
+                              
 def get_segmented_words(word):
     pass
