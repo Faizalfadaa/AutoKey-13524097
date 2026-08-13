@@ -48,3 +48,45 @@
   color: #a1a1aa;
   font-size: 28px;
 }
+
+/* Result list */
+.result {
+  display: grid;
+  gap: 16px;
+}
+
+/* One wrong word */
+.error {
+  border-bottom: 1px solid #e4e4e7;
+  padding-bottom: 14px;
+}
+
+/* Last wrong word */
+.error:last-child {
+  border-bottom: 0;
+}
+
+/* Wrong word text */
+.error-word {
+  margin: 0 0 8px;
+  color: #2d55ab;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Suggestion row */
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* One suggestion */
+.suggestion {
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #2d55ab;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}

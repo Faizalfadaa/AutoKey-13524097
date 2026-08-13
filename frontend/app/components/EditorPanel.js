@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 
 // Main text editor area
-export default function EditorPanel() {
+export default function EditorPanel({setEditorText}) {
   // Store suggestions from the backend
   const [suggestions, setSuggestions] = useState([]);
 
@@ -23,6 +23,7 @@ export default function EditorPanel() {
         (event) => {
           // Get the full editor text
           const text = event.currentTarget.innerText;
+          setEditorText(text);
 
           // Get the last typed word
           const words = text.trim().split(/\s+/);
@@ -62,6 +63,7 @@ export default function EditorPanel() {
 
             /* Update the editor text */
             editorRef.current.innerText = words.join(" ") + " ";
+            setEditorText(editorRef.current.innerText);
             setSuggestions([]);                
           }
         }
@@ -84,6 +86,7 @@ export default function EditorPanel() {
 
                 /* Update the editor text */
                 editorRef.current.innerText = words.join(" ") + " ";
+                setEditorText(editorRef.current.innerText);
                 setSuggestions([]);      
               }
             }>
