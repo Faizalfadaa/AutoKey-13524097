@@ -127,6 +127,18 @@ def get_check_all(text):
 
 # Return the segmented words data              
 def get_segmented_words(word):
+    word = word.lower().strip()
+
+    if word == "":
+        return {
+            "input": word,
+            "is_success": False,
+            "segmented_words": [],
+            "segmented_text": "Tidak ditemukan",
+            "dp": [],
+            "traceback": []
+        }
+    
     segmented_words, dp, traceback_process = word_segmentation(word, DATA, N_WORDS)
 
     # Change infinity values so the API can safely return the DP table as JSON
@@ -134,10 +146,18 @@ def get_segmented_words(word):
         if dp[i] == math.inf:
             dp[i] = None
 
+    if len(segmented_words) == 0:
+        segmented_text = "Tidak ditemukan"
+        is_success = False
+    else:
+        segmented_text = " ".join(segmented_words)
+        is_success = True
+
     return {
         "input": word,
+        "is_success": is_success,
         "segmented_words": segmented_words,
-        "segmented_text": " ".join(segmented_words),
+        "segmented_text": segmented_text,
         "dp": dp,
         "traceback": traceback_process
     }
