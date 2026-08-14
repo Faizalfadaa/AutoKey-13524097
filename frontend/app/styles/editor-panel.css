@@ -21,16 +21,6 @@
   font-weight: 700;
 }
 
-/* Small rounded label */
-.editor-top span {
-  border-radius: 999px;
-  background: #eff6ff;
-  color: #2d55ab;
-  padding: 7px 12px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
 /* Editable text box */
 .text-area {
   min-height: 150px;
@@ -67,6 +57,32 @@
   box-shadow: 0 8px 20px #00000014;
 }
 
+/* Autocomplete dropdown header */
+.suggestion-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px 6px;
+}
+
+/* Autocomplete dropdown title */
+.suggestion-top p {
+  margin: 0;
+  color: #71717a;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Autocomplete helper badge */
+.suggestion-top span {
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: #0f766e;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
 /* Suggestion item */
 .suggestion-item {
   width: 100%;
@@ -82,4 +98,64 @@
 /* Suggestion hover state */
 .suggestion-item:hover {
   background: #eff6ff;
+}
+
+/* Wrong word underline */
+.wrong-word {
+  cursor: pointer;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #ef4444;
+  text-underline-offset: 4px;
+}
+
+/* Spell check popup */
+.spell-popup {
+  width: 260px;
+  margin-top: 10px;
+  border: 1px solid #d4d4d8;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 10px;
+  box-shadow: 0 10px 24px #0000001f;
+}
+
+/* Spell popup title */
+.spell-popup p {
+  margin: 0 0 8px;
+  color: #71717a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* One spell suggestion */
+.spell-option {
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #172554;
+  padding: 9px 10px;
+  text-align: left;
+  font-family: inherit;
+}
+
+/* Spell suggestion hover */
+.spell-option:hover {
+  background: #f1f5f9;
+}
+
+/* Add word button */
+.add-word {
+  width: 100%;
+  margin-top: 8px;
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #172554;
+  padding: 12px 10px 4px;
+  text-align: left;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
 }
